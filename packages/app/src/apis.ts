@@ -29,16 +29,38 @@ import {
 } from '@backstage/plugin-graphiql';
 import {
   AnyApiFactory,
-  configApiRef,
   createApiFactory,
   discoveryApiRef,
   errorApiRef,
+  identityApiRef,
   fetchApiRef,
   githubAuthApiRef,
 } from '@backstage/core-plugin-api';
 import { AuthProxyDiscoveryApi } from './AuthProxyDiscoveryApi';
 
+import { analyticsApiRef, configApiRef } from '@backstage/core-plugin-api';
+
+import { GenericAnalyticsAPI } from '@pfeifferj/backstage-plugin-analytics-generic';
+import { catalogApiRef } from '@backstage/plugin-catalog-react';
+
 export const apis: AnyApiFactory[] = [
+  createApiFactory({
+    api: analyticsApiRef,
+    deps: {
+      configApi: configApiRef,
+      errorApi: errorApiRef,
+      identityApi: identityApiRef,
+      catalogApi: catalogApiRef,
+    },
+    factory: ({ configApi, errorApi, identityApi, catalogApi }) =>
+      GenericAnalyticsAPI.fromConfig(
+        configApi,
+        errorApi,
+        identityApi,
+        catalogApi,
+      ),
+  }),
+
   createApiFactory({
     api: discoveryApiRef,
     deps: { configApi: configApiRef },

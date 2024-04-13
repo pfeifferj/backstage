@@ -14409,6 +14409,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pfeifferj/backstage-plugin-analytics-generic@npm:^0.0.30":
+  version: 0.0.30
+  resolution: "@pfeifferj/backstage-plugin-analytics-generic@npm:0.0.30"
+  dependencies:
+    "@backstage/core-plugin-api": ^1.9.0
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.2.0
+  checksum: 605c18c94316adab74b8f3389a9ed06f734a58f3a06011c0080efb3c68c366633847e96c6926a3630ee171038d02a3f268c776d8376e495e07206499b3b78d5e
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -27268,6 +27279,7 @@ __metadata:
     "@material-ui/lab": 4.0.0-alpha.61
     "@octokit/rest": ^19.0.3
     "@oriflame/backstage-plugin-score-card": ^0.8.0
+    "@pfeifferj/backstage-plugin-analytics-generic": ^0.0.30
     "@playwright/test": ^1.32.3
     "@roadiehq/backstage-plugin-buildkite": ^2.0.8
     "@roadiehq/backstage-plugin-github-insights": ^2.0.5

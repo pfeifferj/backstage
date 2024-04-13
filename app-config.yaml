@@ -24,6 +24,11 @@ app:
             title: '#backstage'
 
   packageName: example-app
+  analytics:
+    generic:
+      host: https://minimalistic-webserver-fries.apps.ocp4-prd.josie.cloud
+      interval: 0 # interval in minutes to ship logs, set to 0 for instant streaming, default: 30 mins
+      debug: true
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -48,6 +53,7 @@ backend:
     origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
+    Access-Control-Allow-Origin: '*'
   csp:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
@@ -248,24 +254,24 @@ catalog:
         - search
         - todo
 
-  processors:
-    ldapOrg:
-      ### Example for how to add your enterprise LDAP server
-      # providers:
-      #   - target: ldaps://ds.example.net
-      #     bind:
-      #       dn: uid=ldap-reader-user,ou=people,ou=example,dc=example,dc=net
-      #       secret: ${LDAP_SECRET}
-      #     users:
-      #       dn: ou=people,ou=example,dc=example,dc=net
-      #       options:
-      #         filter: (uid=*)
-      #       map:
-      #         description: l
-      #     groups:
-      #       dn: ou=access,ou=groups,ou=example,dc=example,dc=net
-      #       options:
-      #         filter: (&(objectClass=some-group-class)(!(groupType=email)))
+  # processors:
+  # ldapOrg:
+  ### Example for how to add your enterprise LDAP server
+  # providers:
+  #   - target: ldaps://ds.example.net
+  #     bind:
+  #       dn: uid=ldap-reader-user,ou=people,ou=example,dc=example,dc=net
+  #       secret: ${LDAP_SECRET}
+  #     users:
+  #       dn: ou=people,ou=example,dc=example,dc=net
+  #       options:
+  #         filter: (uid=*)
+  #       map:
+  #         description: l
+  #     groups:
+  #       dn: ou=access,ou=groups,ou=example,dc=example,dc=net
+  #       options:
+  #         filter: (&(objectClass=some-group-class)(!(groupType=email)))
 
   locations:
     # Add a location here to ingest it, for example from a URL:
@@ -303,13 +309,13 @@ catalog:
       target: ../../plugins/scaffolder-backend/sample-templates/all-templates.yaml
       rules:
         - allow: [Template]
-scaffolder:
-  # Use to customize default commit author info used when new components are created
-  # defaultAuthor:
-  #   name: Scaffolder
-  #   email: scaffolder@backstage.io
-  # Use to customize the default commit message when new components are created
-  # defaultCommitMessage: 'Initial commit'
+# scaffolder:
+# Use to customize default commit author info used when new components are created
+# defaultAuthor:
+#   name: Scaffolder
+#   email: scaffolder@backstage.io
+# Use to customize the default commit message when new components are created
+# defaultCommitMessage: 'Initial commit'
 
 auth:
   ### Add auth.keyStore.provider to more granularly control how to store JWK data when running

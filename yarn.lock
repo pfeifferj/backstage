@@ -4056,7 +4056,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/errors@^1.2.3, @backstage/errors@workspace:^, @backstage/errors@workspace:packages/errors":
+"@backstage/errors@^1.2.3, @backstage/errors@^1.2.4, @backstage/errors@workspace:^, @backstage/errors@workspace:packages/errors":
   version: 0.0.0-use.local
   resolution: "@backstage/errors@workspace:packages/errors"
   dependencies:
@@ -40963,7 +40963,7 @@ __metadata:
     "@backstage/codemods": "workspace:*"
     "@backstage/create-app": "workspace:*"
     "@backstage/e2e-test-utils": "workspace:*"
-    "@backstage/errors": "workspace:^"
+    "@backstage/errors": ^1.2.4
     "@backstage/repo-tools": "workspace:*"
     "@changesets/cli": ^2.14.0
     "@manypkg/get-packages": ^1.1.3
